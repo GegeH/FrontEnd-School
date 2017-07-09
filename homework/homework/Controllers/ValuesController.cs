@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using homework.Model;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Server.Kestrel;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 namespace homework.Controllers
 {
     [Route("api/[controller]")]
@@ -11,34 +16,33 @@ namespace homework.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Person> Get()
         {
-            return new string[] { "value1", "value2" };
+            
+           string filename = @"D:\FrontEnd-School\homework\homework\ajax\data.txt";
+           string text = System.IO.File.ReadAllText(filename);
+            var person = JsonConvert.DeserializeObject<List<Person>>(text);
+         
+            return person;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Person Get(int id)
         {
-            return "value";
+            string filename = @"D:\FrontEnd-School\homework\homework\ajax\data.txt";
+            string text = System.IO.File.ReadAllText(filename);
+            var person = JsonConvert.DeserializeObject<List<Person>>(text);
+
+            return person[id];
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public bool Post([FromBody]string value)
         {
+            return false;
         }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      
     }
 }
