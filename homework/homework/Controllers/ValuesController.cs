@@ -39,7 +39,7 @@ namespace homework.Controllers
 
         // POST api/values
         [HttpPost]
-        public bool Post([FromBody]string value)
+        public bool Post([FromBody]Person value)
         {
             return false;
         }

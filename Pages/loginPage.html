@@ -88,6 +88,14 @@
 
 <script>
    $("#btnLogin").click(function() {
-        
+      var dataJSON = {
+	"id":"1"
+}
+         $.ajax({
+            type: 'POST',
+            url: 'http://localhost:56655/api/values',
+            data: JSON.stringify(dataJSON),
+            contentType: 'application/json; charset=utf-8'
+        });
     });
 </script>
