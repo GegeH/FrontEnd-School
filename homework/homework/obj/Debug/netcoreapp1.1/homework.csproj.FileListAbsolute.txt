@@ -1,0 +1,9 @@
+D:\FrontEnd-School\homework\homework\bin\Debug\netcoreapp1.1\homework.deps.json
+D:\FrontEnd-School\homework\homework\bin\Debug\netcoreapp1.1\homework.runtimeconfig.json
+D:\FrontEnd-School\homework\homework\bin\Debug\netcoreapp1.1\homework.runtimeconfig.dev.json
+D:\FrontEnd-School\homework\homework\bin\Debug\netcoreapp1.1\homework.dll
+D:\FrontEnd-School\homework\homework\bin\Debug\netcoreapp1.1\homework.pdb
+D:\FrontEnd-School\homework\homework\obj\Debug\netcoreapp1.1\homework.csprojResolveAssemblyReference.cache
+D:\FrontEnd-School\homework\homework\obj\Debug\netcoreapp1.1\homework.AssemblyInfo.cs
+D:\FrontEnd-School\homework\homework\obj\Debug\netcoreapp1.1\homework.dll
+D:\FrontEnd-School\homework\homework\obj\Debug\netcoreapp1.1\homework.pdb
