@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+<script src="bootstrap/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-4">
+        <div id="txt1"></div>
+    </div>
+
+    <div class="col-md-4">
+        <div id="txtOpertor"></div>
+    </div>
+    <div class="col-md-4">
+        <div id="txt2"></div>
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="txtResult" />
+    </div>
+</div>
+<div class="btn btn-primary" id="btnNext">Next</div>
+<div class="btn btn-danger" id="btnCancel">Cancel</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                40% Complete (success)
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
+<script>
+    var total = 4;
+    var eachNumber = total / 4;
+    var correctness = 0;
+    var completed = 0;
+    var input1, input2;
+    function oneTime() {
+        input1 = Math.floor((Math.random() * 10) + 1) - 1;
+        input2 = Math.floor((Math.random() * 10) + 1) - 1;
+        
+        if (completed < eachNumber) {
+            $("#txtOpertor").html("+");
+        }
+        else if(completed < eachNumber * 2){
+            $("#txtOpertor").html("-");
+        }
+        else if(completed < eachNumber*3){
+            $("#txtOpertor").html("*");
+        }
+        $("#txt1").html(input1);
+        $("#txt2").html(input2);
+        if(completed >= eachNumber*3){
+            if(input2 == 0) input2 += 1;
+            $("#txt1").html(input1 * input2);
+            $("#txt2").html(input2);
+            $("#txtOpertor").html("/");
+        }
+
+    }
+    $("#txtResult").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#btnNext").click();
+    }
+});
+    $(document).ready(function () {
+        oneTime();
+
+        $("#btnNext").click(function () {
+            var val = $("#txtResult").val();
+            if (completed < eachNumber && input1 + input2 == val) {
+                correctness += 1;
+            }
+            if(completed>=eachNumber && completed < 2*eachNumber && input1 -input2 == val){
+                correctness +=  1;
+            }
+            if(completed >= 2*eachNumber && completed < 3*eachNumber && input1 * input2 == val){
+                correctness += 1;
+            }
+            if(completed >= 3&eachNumber && input1 == val){
+                correctness += 1; 
+            }
+            completed += 1;
+            $("#txtResult").val("");
+            console.log(completed);
+            if (completed < total) oneTime();
+            else {
+                // pop up window
+                console.log("this should have a popup.");
+            }
+        });
+    });
+
+</script>

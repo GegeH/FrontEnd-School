@@ -16,7 +16,7 @@ namespace HW.Controllers
         [EnableCors("http://localhost:5794", "*", "GET")]
         public IEnumerable<Person> Get()
         {
-            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\DotNET_InClass\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.txt";
+            string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
             string text = System.IO.File.ReadAllText(filename);
             var person = JsonConvert.DeserializeObject<List<Person>>(text);
             return person;
