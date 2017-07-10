@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet" />
+<script src="bootstrap/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-4">
+        <div id="txt1"></div>
+    </div>
+
+    <div class="col-md-4">
+        <div id="txtOpertor"></div>
+    </div>
+    <div class="col-md-4">
+        <div id="txt2"></div>
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="txtResult" />
+    </div>
+</div>
+<div class="btn btn-primary" id="btnNext">Next</div>
+<div class="btn btn-danger" id="btnCancel">Cancel</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="myProgress">
+            <div id="myBar"></div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+
+</html>
+<script>
+    var total = 4;
+    var eachNumber = total / 4;
+    var correctness = 0;
+    var completed = 0;
+    var input1, input2;
+    function oneTime() {
+        input1 = Math.floor((Math.random() * 10) + 1) - 1;
+        input2 = Math.floor((Math.random() * 10) + 1) - 1;
+
+        if (completed < eachNumber) {
+            $("#txtOpertor").html("+");
+        }
+        else if (completed < eachNumber * 2) {
+            $("#txtOpertor").html("-");
+        }
+        else if (completed < eachNumber * 3) {
+            $("#txtOpertor").html("*");
+        }
+        $("#txt1").html(input1);
+        $("#txt2").html(input2);
+        if (completed >= eachNumber * 3) {
+            if (input2 == 0) input2 += 1;
+            $("#txt1").html(input1 * input2);
+            $("#txt2").html(input2);
+            $("#txtOpertor").html("/");
+        }
+
+    }
+    $("#txtResult").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#btnNext").click();
+        }
+    });
+    $(document).ready(function () {
+        oneTime();
+        $("#myBar").css('width','0%');
+        $("#btnNext").click(function () {
+            var val = $("#txtResult").val();
+            if (completed < eachNumber && input1 + input2 == val) {
+                correctness += 1;
+            }
+            if (completed >= eachNumber && completed < 2 * eachNumber && input1 - input2 == val) {
+                correctness += 1;
+            }
+            if (completed >= 2 * eachNumber && completed < 3 * eachNumber && input1 * input2 == val) {
+                correctness += 1;
+            }
+            if (completed >= 3 & eachNumber && input1 == val) {
+                correctness += 1;
+            }
+            completed += 1;
+            var widthCompleted =completed/total * 100;
+            $("#myBar").css('width',widthCompleted+'%');
+            $("#txtResult").val("");
+            console.log(completed);
+            if (completed < total) oneTime();
+            else {
+               $("#myModal").css('display','block');
+            }
+        });
+
+
+        // modal close
+    $(".close").click(function(){
+         $("#myModal").css('display','none');
+    });
+    });
+
+
+   
+</script>
+
+<style>
+    #myProgress {
+    width: 100%;
+    background-color: grey;
+}
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: green;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
