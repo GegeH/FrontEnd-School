@@ -24,10 +24,8 @@
 <div class="btn btn-danger" id="btnCancel">Cancel</div>
 <div class="row">
     <div class="col-md-12">
-        <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                40% Complete (success)
-            </div>
+        <div id="myProgress">
+            <div id="myBar"></div>
         </div>
     </div>
 </div>
@@ -42,49 +40,51 @@
     function oneTime() {
         input1 = Math.floor((Math.random() * 10) + 1) - 1;
         input2 = Math.floor((Math.random() * 10) + 1) - 1;
-        
+
         if (completed < eachNumber) {
             $("#txtOpertor").html("+");
         }
-        else if(completed < eachNumber * 2){
+        else if (completed < eachNumber * 2) {
             $("#txtOpertor").html("-");
         }
-        else if(completed < eachNumber*3){
+        else if (completed < eachNumber * 3) {
             $("#txtOpertor").html("*");
         }
         $("#txt1").html(input1);
         $("#txt2").html(input2);
-        if(completed >= eachNumber*3){
-            if(input2 == 0) input2 += 1;
+        if (completed >= eachNumber * 3) {
+            if (input2 == 0) input2 += 1;
             $("#txt1").html(input1 * input2);
             $("#txt2").html(input2);
             $("#txtOpertor").html("/");
         }
 
     }
-    $("#txtResult").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#btnNext").click();
-    }
-});
+    $("#txtResult").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#btnNext").click();
+        }
+    });
     $(document).ready(function () {
         oneTime();
-
+        $("#myBar").css('width','0%');
         $("#btnNext").click(function () {
             var val = $("#txtResult").val();
             if (completed < eachNumber && input1 + input2 == val) {
                 correctness += 1;
             }
-            if(completed>=eachNumber && completed < 2*eachNumber && input1 -input2 == val){
-                correctness +=  1;
-            }
-            if(completed >= 2*eachNumber && completed < 3*eachNumber && input1 * input2 == val){
+            if (completed >= eachNumber && completed < 2 * eachNumber && input1 - input2 == val) {
                 correctness += 1;
             }
-            if(completed >= 3&eachNumber && input1 == val){
-                correctness += 1; 
+            if (completed >= 2 * eachNumber && completed < 3 * eachNumber && input1 * input2 == val) {
+                correctness += 1;
+            }
+            if (completed >= 3 & eachNumber && input1 == val) {
+                correctness += 1;
             }
             completed += 1;
+            var widthCompleted =completed/total * 100;
+            $("#myBar").css('width',widthCompleted+'%');
             $("#txtResult").val("");
             console.log(completed);
             if (completed < total) oneTime();
@@ -96,3 +96,15 @@
     });
 
 </script>
+
+<style>
+    #myProgress {
+    width: 100%;
+    background-color: grey;
+}
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: green;
+}
+</style>
