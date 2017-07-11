@@ -16,5 +16,7 @@ namespace HW.Models
         public string Password { get; set; }
         public int Login { get; set; } // 0: not logged in, 1: is doing testing 
 
+        public int Progress { get; set; } // how many tests already completed
+        public int CorrectNumber { get; set; } // how many tests is correct
     }
 }
