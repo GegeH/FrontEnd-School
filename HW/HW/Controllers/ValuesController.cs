@@ -12,30 +12,38 @@ namespace HW.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        [HttpGet]
-        [EnableCors("http://localhost:5778", "*", "GET")]
-        public IEnumerable<Person> Get()
-        {
+         private List<Person> _allPerson = new List<Person>();
 
+        public ValuesController()
+        {
             //string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.txt";
             string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
             string text = System.IO.File.ReadAllText(filename);
             var person = JsonConvert.DeserializeObject<List<Person>>(text);
-            return person;
+            _allPerson = person;
+        }
+
+        // GET api/values
+        [HttpGet]
+        [EnableCors("http://localhost:5778", "*", "GET")]
+        public IEnumerable<Person> Get()
+        {           
+            return _allPerson;
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public Person Get(int id)
         {
-            return "value";
+            return _allPerson.SingleOrDefault(m => m.Id == id);
         }
 
         // POST api/values
         [EnableCors("*", "*", "GET,POST")]
-        public bool Post([FromBody]Person value)
+        public Person Post([FromBody]Person person)
         {
-            return false;
+           // if found, return full properties of person
+           // if not found, return null
+            return _allPerson.SingleOrDefault(m => m.Id == person.Id && m.Password == person.Password);
         }
 
         // PUT api/values/5
