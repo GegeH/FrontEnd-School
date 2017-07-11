@@ -38,6 +38,12 @@
 
 
 <script>
+
+    $("#password").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $("#btnLogin").click();
+        }
+    });
    $("#btnLogin").click(function() {
        var data = {}
        data.Id = $("#txtId").val();
@@ -48,9 +54,12 @@
             data: JSON.stringify(data),
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
+                console.log(data);
                 if (data != null) {
-                    if (data.Role == 0 && data.progress < 40) {
+                   
+                    if (data.Role == 0 && data.Progress < 40) {
                         // indicate it's a student
+                        console.log("hi");
                         window.location.href = "skillTestingPage.html";
                     }
                     if (data.Role == 1) {

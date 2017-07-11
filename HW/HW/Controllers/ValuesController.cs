@@ -16,8 +16,8 @@ namespace HW.Controllers
 
         public ValuesController()
         {
-            //string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.txt";
-            string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
+            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.txt";
+            //string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
             string text = System.IO.File.ReadAllText(filename);
             var person = JsonConvert.DeserializeObject<List<Person>>(text);
             _allPerson = person;
@@ -38,13 +38,18 @@ namespace HW.Controllers
         }
 
         // POST api/values
-
         [EnableCors("*", "*", "GET,POST")]
         public Person Post([FromBody]Person person)
         {
            // if found, return full properties of person
            // if not found, return null
             return _allPerson.SingleOrDefault(m => m.Id == person.Id && m.Password == person.Password);
+        }
+        [Route("api/create")]
+        [EnableCors("*", "*", "GET,POST")]
+        public void Post([FromBody]string value)
+        {
+
         }
 
         // PUT api/values/5
