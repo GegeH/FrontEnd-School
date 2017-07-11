@@ -16,8 +16,8 @@ namespace HW.Controllers
 
         public ValuesController()
         {
-            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.txt";
-            //string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
+            //string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.txt";
+            string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
             string text = System.IO.File.ReadAllText(filename);
             var person = JsonConvert.DeserializeObject<List<Person>>(text);
             _allPerson = person;
@@ -45,9 +45,10 @@ namespace HW.Controllers
            // if not found, return null
             return _allPerson.SingleOrDefault(m => m.Id == person.Id && m.Password == person.Password);
         }
+        [HttpPost]
         [Route("api/create")]
         [EnableCors("*", "*", "GET,POST")]
-        public void Post([FromBody]string input)
+        public void Create([FromBody]Person input)
         {
 
         }
