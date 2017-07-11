@@ -47,7 +47,7 @@ namespace HW.Controllers
         }
         [Route("api/create")]
         [EnableCors("*", "*", "GET,POST")]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]string input)
         {
 
         }

@@ -63,17 +63,33 @@
         $(document).ready(function () {
 
             $("#btnSubmit").click(function () {
-                var input = {};
-                input.Id = $("#inputStuId").val();
-                input.FirstName = $("#inputFName").val();
-                input.LastName = $("#inputLName").val();
-                input.Password = $("#inputPassword").val();
+                //var input = {};
+                //input.Id = $("#inputStuId").val();
+                //input.FirstName = $("#inputFName").val();
+                //input.LastName = $("#inputLName").val();
+                //input.Password = $("#inputPassword").val();
+                //console.log(input);
+                var input = "ddd";
+                debugger;
                 $.ajax({
                     type: "POST",
                     url: "http://localhost:5794/api/create",
+                    contentType: "application/json; charset=utf-8",
+                    //dataType: "json",
                     crossDomain: true,
-                    data: {JSON.stringify({})},
+                    //data: JSON.stringify({
+                    //        "Id": input.Id,
+                    //        "FirstName": input.FirstName,
+                    //        "LastName": input.LastName,
+                    //        "Password": input.Password,
+                    //        "Role": 0,
+                    //        "Progress": 0,
+                    //        "CorrectNumber": 0
+                    //    }),
+                    data: input,
+              
                     success: function (data) {
+                        alert(data);
                     }
                 });
             })
