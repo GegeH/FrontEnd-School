@@ -50,8 +50,9 @@ namespace HW.Controllers
            // if not found, return null
             return _allPerson.SingleOrDefault(m => m.Id == person.Id && m.Password == person.Password);
         }
-        [HttpPost]
+       
         [Route("api/create")]
+        [HttpPost]
         [EnableCors("*", "*", "GET,POST")]
         public void Create([FromBody]Person input)
         {
