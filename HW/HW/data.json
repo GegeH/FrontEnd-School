@@ -1,0 +1,29 @@
+﻿[
+  {
+    "Id": 1001,
+    "FirstName": "Harry",
+    "LastName": "Potter",
+    "Role": 0,
+    "Password": "123",
+    "Progress": 0,
+    "CorrectNumber": 0
+  },
+  {
+    "Id": 8881,
+    "FirstName": "Sirius",
+    "LastName": "Snape",
+    "Role": 1,
+    "Password": "456",
+    "Progress": 0,
+    "CorrectNumber": 0
+  },
+  {
+    "Id": 1003,
+    "FirstName": "Hayley",
+    "LastName": "HHHHH",
+    "Role": 0,
+    "Password": "456",
+    "Progress": 0,
+    "CorrectNumber": 0
+  }
+]

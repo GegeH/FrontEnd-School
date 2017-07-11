@@ -16,7 +16,7 @@ namespace HW.Controllers
 
         public ValuesController()
         {
-            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.txt";
+            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.json";
             //string filename = @"/data.txt";
             //string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
 
@@ -53,6 +53,13 @@ namespace HW.Controllers
         [EnableCors("*", "*", "GET,POST")]
         public void Create([FromBody]Person input)
         {
+            _allPerson.Add(input);
+            string jsonInput = JsonConvert.SerializeObject(_allPerson);
+            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.json";
+
+            //System.IO.File.AppendAllText(filename, jsonInput);
+            System.IO.File.WriteAllText(filename, jsonInput);
+
 
         }
 
