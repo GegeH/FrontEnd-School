@@ -18,46 +18,57 @@
         </div>
     </div>
 
-    <section class="testing-info">
-        <div class="container">
-            <div class="row main">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Progress</th>
-                                <th>Correction Rate</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                        </tbody>
-                    </table>
+    <div class="container">
+        <div class="row main">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Progress</th>
+                            <th>Correction Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>HP</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Price</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>92%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Apple</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>80%</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div>
-                        <a class="btn btn-success" href="createStudent.html" role="button">Create New Student Account</a>
-                    </div>
+                <div>
+                    <a class="btn btn-success" href="createStudent.html" role="button">Create New Student Account</a>
                 </div>
             </div>
         </div>
-    </section>
-
-
+    </div>
 
     <script>
-        $("#btnLogin").click(function () {
-            var dataJSON = {
-                "id": "1"
-            }
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:5794/api/values',
-                data: JSON.stringify(dataJSON),
-                contentType: 'application/json; charset=utf-8'
-            });
-        });
+
     </script>
 </body>
 
