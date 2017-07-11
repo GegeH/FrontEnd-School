@@ -8,13 +8,13 @@
     <div class="container">
         <div class="row main">
             <div class="form-header">
-                <h1 class="text-center ">Welcome to Test Center </h1>
+                <h1 class="text-center ">Welcome</h1>
             </div>
             <div class="main-content">
             
                 <div class="input-group ">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-                    <input id="txtId" type="text" class="form-control"  placeholder="Enter your student Id ">
+                    <input id="txtId" type="text" class="form-control"  placeholder="Enter your Id ">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
@@ -41,14 +41,29 @@
 
 <script>
    $("#btnLogin").click(function() {
-      var dataJSON = {
-	"id":"1"
-}
+       var data = {}
+       data.Id = $("#txtId").val();
+       data.Password = $("#password").val();
          $.ajax({
             type: 'POST',
             url: 'http://localhost:5794/api/values',
-            data: JSON.stringify(dataJSON),
-            contentType: 'application/json; charset=utf-8'
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data != null) {
+                    if (data.Role == 0 && data.progress < 40) {
+                        // indicate it's a student
+                        window.location.href = "skillTestingPage.html";
+                    }
+                    if (data.Role == 1) {
+                        // indicate it's a teacher
+                        window.location.href = "Teacher.html";
+                    }
+                } else {
+                    alert("Please enter the correct id and password");
+                }
+               
+            }
         });
     });
 </script>
