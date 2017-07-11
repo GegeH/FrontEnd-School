@@ -32,8 +32,8 @@
                             <th>Correction Rate</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
-                        <tr>
+                    <tbody id="tBody">
+                        <!--<tr>
                             <th scope="row">1</th>
                             <td>HP</td>
                             <td>Mark</td>
@@ -56,7 +56,7 @@
                             <td>the Bird</td>
                             <td>@twitter</td>
                             <td>80%</td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
 
@@ -68,7 +68,24 @@
     </div>
 
     <script>
-
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:5794/api/values",
+                contentType: "application/json; charset=utf-8",
+                dataType : "json",
+                success: function(data) {
+                    /*$.each(data, function(key, value) {
+                        var jsonData = JSON.stringify(value);
+                        var objData = $.parseJSON(jsonData);
+                        var stuID = objData.Id;
+                        var stuUsername = objData.UserName;
+                        $("#tBody").append("<tr><td>"+stuID+"</td><td>"+stuUsername+"</td>");
+                    })*/
+                    alert(JSON.stringify(data));
+                },
+            });
+        });
     </script>
 </body>
 
