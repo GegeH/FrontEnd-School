@@ -7,7 +7,6 @@
       "LastName": "Potter",
       "Password": "123",
       "Role": 0,
-	  "Login":"0"
     },
     {
       "Id": 1002,
@@ -16,7 +15,6 @@
       "LastName": "Snape",
       "Password": "456",
       "Role": 1,
-	  "Login":"1"
     },
 	{
       "Id": 1003,
@@ -25,6 +23,5 @@
       "LastName": "HHHHH",
       "Password": "456",
       "Role": 0,
-	  "Login":"1"
     }
   ]

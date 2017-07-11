@@ -32,10 +32,11 @@ namespace HW.Controllers
         }
 
         // POST api/values
-        [EnableCors("*", "*", "GET,POST")]
-        public bool Post([FromBody]Person value)
+        [HttpPost]
+        [EnableCors("*", "*", "GET, POST")]
+        public void Post([FromBody]string value)
         {
-            return false;
+            
         }
 
         // PUT api/values/5

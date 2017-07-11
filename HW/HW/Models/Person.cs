@@ -14,7 +14,5 @@ namespace HW.Models
         public string LastName { get; set; }
         public int Role { get; set; } // 0 : student, 1 : teacher
         public string Password { get; set; }
-        public int Login { get; set; } // 0: not logged in, 1: is doing testing 
-
     }
 }

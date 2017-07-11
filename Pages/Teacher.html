@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <title>Teacher Page</title>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
@@ -51,19 +50,14 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-
                     $.each(data, function (key, value) {
                         var stuID = value.Id;
-                        var stuUsername = value.UserName;
                         var stuFName = value.FirstName;
                         var stuLName = value.LastName;
-                        var stuRole = value.Role;
+                        
                         var stuLogin = value.Login;
-                        if (stuRole == 0 & stuLogin == 1) {
-                            $("#tBody").append("<tr><td>" + stuID + "</td><td>" + stuUsername + "</td></tr>");
-                        }
+                        $("#tBody").append("<tr><td>" + stuID + "</td><td>" + stuFName + "</td></tr>");
                     })
-                    //alert(JSON.stringify(data));
                 },
             });
         });
