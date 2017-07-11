@@ -2,29 +2,27 @@
     {
 
       "Id": 1001,
-      "UserName": "HP",
       "FirstName": "Harry",
       "LastName": "Potter",
       "Password": "123",
       "Role": 0,
-	  "Login":"0"
+      "Progress":0,
+	  "CorrectNumber":0
     },
     {
       "Id": 1002,
-      "UserName": "Price",
       "FirstName": "Sirius",
       "LastName": "Snape",
       "Password": "456",
-      "Role": 1,
-	  "Login":"1"
+      "Role": 1
     },
 	{
       "Id": 1003,
-      "UserName": "Apple",
       "FirstName": "Hayley",
       "LastName": "HHHHH",
       "Password": "456",
       "Role": 0,
-	  "Login":"1"
+	  "Progress":0,
+	  "CorrectNumber":0
     }
   ]
