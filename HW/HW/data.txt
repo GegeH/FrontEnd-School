@@ -1,6 +1,5 @@
 ﻿[
     {
-
       "Id": 1001,
       "FirstName": "Harry",
       "LastName": "Potter",
@@ -24,6 +23,5 @@
       "Role": 0,
 	  "Progress":0,
 	  "CorrectNumber":0
-
     }
   ]
