@@ -24,7 +24,6 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>User Name</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Progress</th>
@@ -50,15 +49,21 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    $.each(data, function (key, value) {
-                        var stuID = value.Id;
-                        var stuFName = value.FirstName;
-                        var stuLName = value.LastName;
-                        
-                        var stuLogin = value.Login;
-                        $("#tBody").append("<tr><td>" + stuID + "</td><td>" + stuFName + "</td></tr>");
-                    })
-                },
+                    $.each(data,
+                        function(key, value) {
+                            var stuID = value.Id;
+                            var stuFName = value.FirstName;
+                            var stuLName = value.LastName;
+                            var stuRole = value.Role;
+                            var progress = value.Progress;
+                            var correctness = value.CorrectNumber;
+                           
+                            if (stuRole == 0) {
+                                $("#tBody").append("<tr><td>" + stuID + "</td><td>" + stuFName + "</td><td>" + stuLName + "</td><td>" + progress + "/40 </td><td>" + correctness + "/40 </td></tr>");
+                            }
+                        });                    
+                }
+
             });
         });
     </script>
