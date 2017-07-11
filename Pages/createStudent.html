@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
-
+                <!--<form class="form-horizontal" action="http://localhost:5794/api/create" method="post">-->
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label for="inputStuId" class="col-sm-3 control-label">Student ID</label>
@@ -50,7 +50,8 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" id="btnSubmit" class="btn btn-default">Submit</button>
+                            <!--<input type="submit" id="btnSubmit" class="btn btn-default" value="Submit">-->
+                            <input type="button" id="btnSubmit" class="btn btn-default" value="Submit">
                         </div>
                     </div>
                 </form>
@@ -62,59 +63,30 @@
     <script>
         $(document).ready(function () {
 
-            //$("#btnSubmit").click(function () {
-            //    var input = {};
-            //    input.Id = $("#inputStuId").val();
-            //    input.FirstName = $("#inputFName").val();
-            //    input.LastName = $("#inputLName").val();
-            //    input.Password = $("#inputPassword").val();
-            //    console.log(input);
-            //    debugger;
-            //    $.ajax({
-            //        type: "POST",
-            //        url: "http://localhost:5794/api/values",
-                   
-            //        data: JSON.stringify(input),
-            //        contentType: "application/json; charset=utf-8",
-            //        dataType: "json",
-            //        //crossDomain: true,
-            //        //data: JSON.stringify({
-            //        //        "Id": input.Id,
-            //        //        "FirstName": input.FirstName,
-            //        //        "LastName": input.LastName,
-            //        //        "Password": input.Password,
-            //        //        "Role": 0,
-            //        //        "Progress": 0,
-            //        //        "CorrectNumber": 0
-            //        //    }),
-                 
-              
-            //        success: function (data) {
-            //            alert(data);
-            //        },
-            //        error: function () {
-            //            console.log("Server error or no connection. Please try again.");
-            //        }
-            //    });
-            //})
-            $("#btnSubmit").click(function() {
+            $("#btnSubmit").click(function () {
                 var data = {}
-                data.Id = $("#txtId").val();
-                data.Password = $("#password").val();
-                console.log("data");
+                data.Id = $("#inputStuId").val();
+                data.FirstName = $("#inputFName").val();
+                data.LastName = $("#inputLName").val();
+                data.Password = $("#inputPassword").val();
+                data.Role = 0;
+                data.Progress = 0;
+                data.CorrectNumber = 0;
+
                 $.ajax({
                     type: 'POST',
-                    url: 'http://localhost:5794/api/create',
+                    url: 'http://localhost:5794/api/Create',
                     data: JSON.stringify(data),
                     contentType: 'application/json; charset=utf-8',
                     success: function (data) {
                         console.log("success");
-
+                    },
+                    error: function () {
+                        console.log("Server error or no connection. Please try again.");
                     }
                 });
             });
-        });
+        })
     </script>
 </body>
-
 </html>
