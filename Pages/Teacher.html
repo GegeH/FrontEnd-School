@@ -68,23 +68,27 @@
     </div>
 
     <script>
-        $(document).ready(function(){
-            alert("start!");
+        $(document).ready(function () {
+            // alert("start!");
             $.ajax({
                 type: "GET",
                 url: "http://localhost:5794/api/values",
                 contentType: "application/json; charset=utf-8",
-                dataType : "json",
+                dataType: "json",
                 success: function (data) {
-                    
-                    /*$.each(data, function(key, value) {
-                        var jsonData = JSON.stringify(value);
-                        var objData = $.parseJSON(jsonData);
-                        var stuID = objData.Id;
-                        var stuUsername = objData.UserName;
-                        $("#tBody").append("<tr><td>"+stuID+"</td><td>"+stuUsername+"</td>");
-                    })*/
-                    alert(JSON.stringify(data));
+
+                    $.each(data, function (key, value) {
+                        var stuID = value.Id;
+                        var stuUsername = value.UserName;
+                        var stuFName = value.FirstName;
+                        var stuLName = value.LastName;
+                        var stuRole = value.Role;
+                        var stuLogin = value.Login;
+                        if (stuRole == 0 & stuLogin == 1) {
+                            $("#tBody").append("<tr><td>" + stuID + "</td><td>" + stuUsername + "</td></tr>");
+                        }
+                    })
+                    //alert(JSON.stringify(data));
                 },
             });
         });

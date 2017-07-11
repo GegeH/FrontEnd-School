@@ -1,19 +1,30 @@
 ﻿[
     {
 
-      "Id": 1,
+      "Id": 1001,
       "UserName": "HP",
       "FirstName": "Harry",
       "LastName": "Potter",
+      "Password": "123",
       "Role": 0,
-      "Password": "123"
+	  "Login":"0"
     },
     {
-      "Id": 2,
+      "Id": 1002,
       "UserName": "Price",
       "FirstName": "Sirius",
       "LastName": "Snape",
+      "Password": "456",
       "Role": 1,
-      "Password": "456"
+	  "Login":"1"
+    },
+	{
+      "Id": 1003,
+      "UserName": "Apple",
+      "FirstName": "Hayley",
+      "LastName": "HHHHH",
+      "Password": "456",
+      "Role": 0,
+	  "Login":"1"
     }
   ]
