@@ -13,7 +13,8 @@ namespace HW.Controllers
     public class ValuesController : ApiController
     {
         private static List<Person> _allPerson = new List<Person>();
-        private static  string filename = @"D:\FrontEnd-School\HW\HW\data.json";
+        // private static  string filename = @"D:\FrontEnd-School\HW\HW\data.json";
+        private static string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.json";
         public ValuesController()
         {            
             string text = System.IO.File.ReadAllText(filename);
