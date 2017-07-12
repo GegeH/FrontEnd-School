@@ -1,27 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pages", ".", "{9DD0EA71-5797-4E21-B0B9-B8EC1412EB56}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_5778"
-		Debug.AspNetCompiler.PhysicalPath = "..\FrontEnd_InClass\FProj\FrontEnd-School\Pages\"
+		Debug.AspNetCompiler.PhysicalPath = "..\Pages\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5778\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_5778"
-		Release.AspNetCompiler.PhysicalPath = "..\FrontEnd_InClass\FProj\FrontEnd-School\Pages\"
+		Release.AspNetCompiler.PhysicalPath = "..\Pages\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5778\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "5778"
+		SlnRelativePath = "..\Pages\"
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1D144A0E-21BB-4FD7-80CB-6AEA30562B2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
