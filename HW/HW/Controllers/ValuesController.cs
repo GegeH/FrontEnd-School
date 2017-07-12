@@ -38,6 +38,7 @@ namespace HW.Controllers
         }
 
         // POST api/values
+        [HttpPost]
         [EnableCors("*", "*", "GET,POST")]
         public Person Post([FromBody]Person person)
         {
@@ -54,12 +55,9 @@ namespace HW.Controllers
             _allPerson.Add(input);
             string jsonInput = JsonConvert.SerializeObject(_allPerson);
             System.IO.File.WriteAllText(filename, jsonInput);
-
-
         }
 
         // PUT api/values/5
-    
         [EnableCors("*", "*", "PUT")]
         public void Put(int id, [FromBody]Person value)
         {
