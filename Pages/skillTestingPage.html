@@ -6,29 +6,36 @@
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-1">
         <div id="txt1"></div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-1">
         <div id="txtOpertor"></div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-1">
         <div id="txt2"></div>
     </div>
-    <div class="col-md-4">
-        <input type="text" id="txtResult" />
+    <div class="col-md-1">
+        <input type="text" id="txtResult"/>
     </div>
 </div>
-<div class="btn btn-primary" id="btnNext">Next</div>
-<div class="btn btn-danger" id="btnCancel">Cancel</div>
 <div class="row">
-    <div class="col-md-12">
-        <div id="myProgress">
-            <div id="myBar"></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="btn btn-primary" id="btnNext">Next</div>
+        <div class="btn btn-danger" id="btnCancel">Cancel</div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="myProgress">
+                    <div id="myBar"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <div id="myModal" class="modal">
 
@@ -43,15 +50,15 @@
 
 </html>
 <script>
+   
     var total = 4;
     var eachNumber = total / 4;
-    var correctness = 0;
-    var completed = 0;
+    var correctness;
+    var completed; 
     var input1, input2;
-    function oneTime() {
+    function oneTime(completed) {
         input1 = Math.floor((Math.random() * 10) + 1) - 1;
         input2 = Math.floor((Math.random() * 10) + 1) - 1;
-
         if (completed < eachNumber) {
             $("#txtOpertor").html("+");
         }
@@ -76,9 +83,49 @@
             $("#btnNext").click();
         }
     });
+    function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    }
     $(document).ready(function () {
-        oneTime();
-        $("#myBar").css('width','0%');
+        var id = getUrlParameter('Id');
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:5794/api/values/'+id,
+            contentType: 'application/json; charset=utf-8',
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                if (data != null) {
+                    correctness = data.CorrectNumber;
+                    completed = data.Progress;
+                } else {
+                    correctness = 0;
+                    completed = 0;
+                }
+                if (completed < 4) {
+                    oneTime(completed);
+                    $("#myBar").css('width', completed / total * 100 + '%');
+
+                } else {
+                    $("#myModal").css('display', 'block');
+                }
+            },
+            error: function () {
+                console.log("Server error or no connection. Please try again.");
+            }
+        });
+     
         $("#btnNext").click(function () {
             var val = $("#txtResult").val();
             if (completed < eachNumber && input1 + input2 == val) {
@@ -97,22 +144,41 @@
             var widthCompleted =completed/total * 100;
             $("#myBar").css('width',widthCompleted+'%');
             $("#txtResult").val("");
-            console.log(completed);
-            if (completed < total) oneTime();
+            if (completed < total) oneTime(completed);
             else {
-               $("#myModal").css('display','block');
-            }
+                $("#myModal").css('display', 'block');
+                var update = {};
+                update.id = id;
+                update.CorrectNumber = correctness;
+                update.Progress = completed;
+                debugger;
+                $.ajax({
+                    type: 'PUT',
+                    url: 'http://localhost:5794/api/values/' + id,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: "json",
+                    data: JSON.stringify(update),
+                    success: function (data) {
+
+                    },
+                    error: function () {
+                        console.log("Server error or no connection. Please try again.");
+                    }
+                });
+            };
+               
+            
         });
 
 
         // modal close
-    $(".close").click(function(){
-         $("#myModal").css('display','none');
-    });
+        $(".close").click(function(){
+            $("#myModal").css('display', 'none');
+            window.location.href = "loginPage.html";
+        });
     });
 
 
-   
 </script>
 
 <style>

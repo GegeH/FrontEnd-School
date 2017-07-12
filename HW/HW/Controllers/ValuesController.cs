@@ -12,14 +12,10 @@ namespace HW.Controllers
 {
     public class ValuesController : ApiController
     {
-         private List<Person> _allPerson = new List<Person>();
-
+        private static List<Person> _allPerson = new List<Person>();
+        private static  string filename = @"D:\FrontEnd-School\HW\HW\data.json";
         public ValuesController()
-        {
-            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.json";
-            //string filename = @"/data.txt";
-            //string filename = @"D:\FrontEnd-School\HW\HW\data.txt";
-
+        {            
             string text = System.IO.File.ReadAllText(filename);
             var person = JsonConvert.DeserializeObject<List<Person>>(text);
             _allPerson = person;
@@ -34,6 +30,8 @@ namespace HW.Controllers
         }
 
         // GET api/values/5
+        [HttpGet]
+        [EnableCors("http://localhost:5778", "*", "GET")]
         public Person Get(int id)
         {
             return _allPerson.SingleOrDefault(m => m.Id == id);
@@ -55,17 +53,21 @@ namespace HW.Controllers
         {
             _allPerson.Add(input);
             string jsonInput = JsonConvert.SerializeObject(_allPerson);
-            string filename = @"C:\Users\Gege\Documents\Visual Studio 2015\Projects\FrontEnd_InClass\FProj\FrontEnd-School\HW\HW\data.json";
-
-            //System.IO.File.AppendAllText(filename, jsonInput);
             System.IO.File.WriteAllText(filename, jsonInput);
 
 
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+    
+        [EnableCors("*", "*", "PUT")]
+        public void Put(int id, [FromBody]Person value)
         {
+            var person = _allPerson.Single(m => m.Id == id);
+            person.CorrectNumber = value.CorrectNumber;
+            person.Progress = value.Progress;
+            string jsonInput = JsonConvert.SerializeObject(_allPerson);
+            System.IO.File.WriteAllText(filename, jsonInput);
         }
 
         // DELETE api/values/5
