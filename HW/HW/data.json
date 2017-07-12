@@ -1,1 +1,29 @@
-[{"Id":1001,"FirstName":"Harry","LastName":"Potter","Role":0,"Password":"123","Progress":0,"CorrectNumber":0},{"Id":8881,"FirstName":"Sirius","LastName":"Snape","Role":1,"Password":"456","Progress":0,"CorrectNumber":0},{"Id":1003,"FirstName":"Hayley","LastName":"HHHHH","Role":0,"Password":"456","Progress":0,"CorrectNumber":0},{"Id":11111,"FirstName":"11","LastName":"11","Role":0,"Password":"11","Progress":0,"CorrectNumber":0}]
+[
+  {
+    "Id": 1001,
+    "FirstName": "Harry",
+    "LastName": "Potter",
+    "Role": 0,
+    "Password": "123",
+    "Progress": 4,
+    "CorrectNumber": 3
+  },
+  {
+    "Id": 8881,
+    "FirstName": "Sirius",
+    "LastName": "Snape",
+    "Role": 1,
+    "Password": "456",
+    "Progress": 0,
+    "CorrectNumber": 0
+  },
+  {
+    "Id": 1003,
+    "FirstName": "Hayley",
+    "LastName": "HHHHH",
+    "Role": 0,
+    "Password": "456",
+    "Progress": 0,
+    "CorrectNumber": 0
+  }
+] 
